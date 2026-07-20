@@ -1,0 +1,14 @@
+{
+  "name": "billingbuilder",
+  "version": "0.1.0",
+  "private": true,
+  "description": "BillingBuilder smoke-test slice: app skeleton, data layer, and stubbed auth",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test test/"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
