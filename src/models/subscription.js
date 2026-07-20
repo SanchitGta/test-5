@@ -11,4 +11,14 @@ function getSubscriptionById(db, subscriptionId) {
   return db.prepare('SELECT * FROM subscriptions WHERE subscriptionId = ?').get(subscriptionId) || null;
 }
 
-module.exports = { createSubscription, getSubscriptionById };
+function getActiveSubscriptionForFeatureOrg(db, featureId, orgId) {
+  return (
+    db
+      .prepare(
+        "SELECT * FROM subscriptions WHERE featureId = ? AND orgId = ? AND status = 'active' ORDER BY activatedAt DESC LIMIT 1"
+      )
+      .get(featureId, orgId) || null
+  );
+}
+
+module.exports = { createSubscription, getSubscriptionById, getActiveSubscriptionForFeatureOrg };
